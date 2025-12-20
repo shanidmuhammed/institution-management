@@ -1,13 +1,10 @@
-from odoo import models, fields
-from odoo.odoo.orm.fields_relational import One2many
-from odoo.odoo.tools.sql import set_not_null
-
+from odoo import models, fields, api
 
 class Course(models.Model):
     _name = 'institution.course'
 
     name = fields.Char(string="Course Title", required=True)
-    fee=fields.Char(string="Fee of Course", required=True)
+    fee=fields.Float(string="Fee of Course", required=True)
     code = fields.Char(string="Course Code", required=True)
     description = fields.Text(string="Course Description", required=True)
     duration = fields.Integer(string="Course Duration", required=True)
@@ -31,11 +28,18 @@ class Course(models.Model):
 
     student_ids = fields.One2many('institution.student', 'course_id', string='Students')
 
+    student_count = fields.Integer(compute='_compute_student_count')
+
+    @api.depends('student_ids')
+    def _compute_student_count(self):
+        for record in self:
+            record.student_count = len(record.student_ids)
+
     def action_view_students(self):
         return {
             'type': 'ir.actions.act_window',
             'name': 'Enrolled Students',
             'res_model': 'institution.student',
             'domain': [('course_id', '=', self.id)],
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form'
         }

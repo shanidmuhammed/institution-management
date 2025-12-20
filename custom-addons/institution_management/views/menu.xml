@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <data>
+
     <record id="action_institution_student" model="ir.actions.act_window">
         <field name="name">Students</field>
         <field name="res_model">institution.student</field>
@@ -29,6 +30,25 @@
         <field name="name">Batches</field>
         <field name="res_model">institution.batch</field>
         <field name="view_mode">list,form,kanban</field>
+    </record>
+
+    <record id="action_institution_fee" model="ir.actions.act_window">
+        <field name="name">Student Fee</field>
+        <field name="res_model">institution.fee</field>
+        <field name="view_mode">list,form,kanban</field>
+    </record>
+
+    <record id="action_institution_attendance" model="ir.actions.act_window">
+        <field name="name">Student Attendance</field>
+        <field name="res_model">institution.attendance</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_institution_attendance_summary" model="ir.actions.act_window">
+        <field name="name">Batch Attendance Summary</field>
+        <field name="res_model">institution.attendance.line</field>
+        <field name="view_mode">pivot,graph,list</field>
+        <field name="context">{'search_default_group_by_batch': 1}</field>
     </record>
 
     <menuitem id="menu_institution_root"
@@ -60,5 +80,23 @@
               parent="menu_institution_root"
               action="action_institution_batch"/>
 
+    <menuitem id="menu_institution_fee"
+          name="Fee"
+          parent="menu_institution_root"
+          action="action_institution_fee"/>
+
+    <menuitem id="menu_institution_attendance"
+              name="Attendance"
+              parent="menu_institution_root"/>
+
+    <menuitem id="menu_institution_attendance_view"
+              name="View/Edit Attendance"
+              parent="menu_institution_attendance"
+              action="action_institution_attendance"/>
+
+    <menuitem id="menu_institution_attendance_summary"
+              name="Attendance summary"
+              parent="menu_institution_attendance"
+              action="action_institution_attendance_summary"/>
     </data>
 </odoo>

@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+        <record id="view_institution_category_form" model="ir.ui.view">
+            <field name="name">institution_category_form</field>
+            <field name="model">institution.category</field>
+            <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Category Name:"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="course_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+            </field>
+        </record>
+    </data>
+</odoo>

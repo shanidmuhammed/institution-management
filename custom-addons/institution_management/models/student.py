@@ -11,7 +11,6 @@ class Student(models.Model):
     contact_number = fields.Char(string="Contact Number", required=True)
     place = fields.Char(string="Place", required=True)
 
-    # course_id = fields.Many2one('institution.course', string='Course', required=True)
     batch_id = fields.Many2one('institution.batch', string='Batch')
 
     course_id = fields.Many2one('institution.course',  related='batch_id.course_id' , string='Course')

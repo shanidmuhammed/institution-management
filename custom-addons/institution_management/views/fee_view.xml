@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="view_institution_fee_list" model="ir.ui.view">
+            <field name="name">institution.fee.list</field>
+            <field name="model">institution.fee</field>
+            <field name="arch" type="xml">
+        <list>
+            <field name="student_id"/>
+            <field name="total_fee" string="Course Fee"/>
+            <field name="amount" sum="Total Collected"/>
+            <field name="state" widget="badge" decoration-danger="state == 'pending'" decoration-success="state == 'paid'"/>
+        </list>
+    </field>
+</record>
+    </data>
+</odoo>
