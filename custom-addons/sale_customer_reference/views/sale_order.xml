@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+        <record id="view_sale_order_inherited" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="customer_reference"/>
+                </xpath>
+
+                <xpath expr="//field[@name='customer_reference']" position="after">
+                    <field name="approver_id"/>
+                </xpath>
+                <xpath expr="//field[@name='approver_id']" position="after">
+                    <field name="approvers" widget="many2many_tags"/>
+                </xpath>
+
+                <xpath expr="//notebook" position="inside">
+                    <page string="Extra Charges">
+                        <field name="extra_charge_ids">
+                            <list editable="bottom">
+                                <field name="name"/>
+                                <field name="amount"/>
+                            </list>
+                        </field>
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

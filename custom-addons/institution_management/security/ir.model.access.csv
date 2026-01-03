@@ -1,5 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_institution_student,access_institution_student,model_institution_student,,1,1,1,1
+access_institution_student_admin,access_institution_student_admin,model_institution_student,base.group_system,1,1,1,1
+access_institution_student_teacher,access_institution_student_teacher,model_institution_student,group_institution_teacher,1,1,0,0
+access_institution_student_student,access_institution_student_student,model_institution_student,group_institution_student,1,0,0,0
+
 access_institution_course,access_institution_course,model_institution_course,,1,1,1,1
 access_institution_teacher,access_institution_teacher,model_institution_teacher,,1,1,1,1
 access_institution_category,access_institution_category,model_institution_category,,1,1,1,1
@@ -7,3 +10,4 @@ access_institution_batch,access_institution_batch,model_institution_batch,,1,1,1
 access_institution_fee,access_institution_fee,model_institution_fee,,1,1,1,1
 access_institution_attendance,access_institution_attendance,model_institution_attendance,,1,1,1,1
 access_institution_attendance_line,access_institution_attendance_line,model_institution_attendance_line,,1,1,1,1
+access_institution_student_wizard,access_institution_student_wizard,model_student_register_wizard,,1,1,1,1

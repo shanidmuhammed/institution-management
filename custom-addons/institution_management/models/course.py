@@ -2,9 +2,10 @@ from odoo import models, fields, api
 
 class Course(models.Model):
     _name = 'institution.course'
+    _description = 'Course'
 
     name = fields.Char(string="Course Title", required=True)
-    fee=fields.Float(string="Fee of Course", required=True)
+    fee=fields.Float(string="Fee of Course", required=True, groups='base.group_system')
     code = fields.Char(string="Course Code", required=True)
     description = fields.Text(string="Course Description", required=True)
     duration = fields.Integer(string="Course Duration", required=True)

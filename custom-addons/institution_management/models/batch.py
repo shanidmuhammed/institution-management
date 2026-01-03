@@ -3,6 +3,7 @@ from odoo.exceptions import ValidationError
 
 class Batch(models.Model):
     _name = 'institution.batch'
+    _description = 'Batch'
 
     course_id=fields.Many2one(
         'institution.course',
@@ -27,22 +28,22 @@ class Batch(models.Model):
             if self.start_date > self.end_date:
                 raise ValidationError("The End Date cannot be earlier than the Start Date!")
 
-    @api.model
-    def _check_batch_expiry(self):
-        """ This function is called by the Cron Job to auto-complete batches """
-        today = fields.Date.today()
-
-        # 1. Search for batches that are NOT completed but have expired
-        # We check for 'draft' or 'in_progress' states
-        expired_batches = self.search([
-            ('state', '!=', 'completed'),
-            ('end_date', '<', today)
-        ])
-
-        # 2. Update them all at once (Bulk Write for performance)
-        if expired_batches:
-            expired_batches.write({'state': 'completed'})
-
-            # Optional: Log a note in the chatter
-            # for batch in expired_batches:
-            #     batch.message_post(body="System: Batch automatically marked as Completed due to expiry.")
+    # @api.model
+    # def _check_batch_expiry(self):
+    #     """ This function is called by the Cron Job to auto-complete batches """
+    #     today = fields.Date.today()
+    #
+    #     # 1. Search for batches that are NOT completed but have expired
+    #     # We check for 'draft' or 'in_progress' states
+    #     expired_batches = self.search([
+    #         ('state', '!=', 'completed'),
+    #         ('end_date', '<', today)
+    #     ])
+    #
+    #     # 2. Update them all at once (Bulk Write for performance)
+    #     if expired_batches:
+    #         expired_batches.write({'state': 'completed'})
+    #
+    #         # Optional: Log a note in the chatter
+    #         # for batch in expired_batches:
+    #         #     batch.message_post(body="System: Batch automatically marked as Completed due to expiry.")

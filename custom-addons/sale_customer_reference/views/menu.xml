@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="action_sales_customer_reference_sale" model="ir.actions.act_window">
+            <field name="name">Sales</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">list,form,kanban</field>
+        </record>
+
+        <menuitem id="sales_customer_reference_root"
+                  name="Sales Customer reference"
+                  sequence="10"/>
+
+        <menuitem id="sales_customer_reference_sale"
+                  name="Sales"
+                  parent="sales_customer_reference_root"
+                  action="action_sales_customer_reference_sale"/>
+
+    </data>
+</odoo>

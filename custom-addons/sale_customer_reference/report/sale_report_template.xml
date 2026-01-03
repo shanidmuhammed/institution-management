@@ -1,0 +1,28 @@
+<odoo>
+    <template id="report_simple_sale">
+        <t t-call="web.external_layout">
+            <main>
+                <t t-foreach="docs" t-as="doc">
+                    <div class="page">
+                        <h2>Sale Order Report</h2>
+
+                        <p>
+                            <strong>Order Number:</strong>
+                            <t t-esc="doc.name"/>
+                        </p>
+
+                        <p>
+                            <strong>Customer:</strong>
+                            <t t-esc="doc.partner_id.name"/>
+                        </p>
+
+                        <p>
+                            <strong>Total Amount:</strong>
+                            <t t-esc="doc.amount_total"/>
+                        </p>
+                    </div>
+                </t>
+            </main>
+        </t>
+    </template>
+</odoo>

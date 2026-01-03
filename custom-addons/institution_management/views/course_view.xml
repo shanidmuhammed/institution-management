@@ -34,7 +34,7 @@
                     </group>
                     <group>
                         <group>
-                            <field name="code"/>
+                            <field name="code" groups="base.group_system"/>
                         </group>
                         <group>
                             <label for="duration"/>

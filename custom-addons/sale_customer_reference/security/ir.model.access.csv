@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_extra_charge,access_sale_extra_charge,model_sale_order_extra_charge,,1,1,1,1
+access_account_extra_charge,access_account_extra_charge,model_account_move_extra_charge,,1,1,1,1
+access_stock_extra_charge,access_stock_extra_charge,model_stock_picking_extra_charge,,1,1,1,1
+
+
