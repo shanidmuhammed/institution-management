@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_advance_payment_list" model="ir.ui.view">
+        <field name="name">advance.payment.list</field>
+        <field name="model">advance.payment</field>
+        <field name="arch" type="xml">
+            <list string="Advance Payments">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="partner_type"/>
+                <field name="date"/>
+                <field name="amount"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_advance_payment_form" model="ir.ui.view">
+        <field name="name">advance.payment.form</field>
+        <field name="model">advance.payment</field>
+        <field name="arch" type="xml">
+            <form string="Advance Payment">
+                <header>
+
+                    <button name="action_post"
+                            type="object"
+                            string="Post"
+                            class="btn-primary"
+                            invisible="state != 'draft'"/>
+
+                    <button name="action_cancel"
+                            type="object"
+                            string="Cancel"
+                            class="btn-secondary"
+                            invisible="state != 'posted'"/>
+
+                    <button name="action_reset_to_draft"
+                            type="object"
+                            string="Reset to Draft"
+                            class="btn-secondary"
+                            invisible="state != 'cancelled'"/>
+
+                    <field name="state"
+                           widget="statusbar"/>
+
+                </header>
+
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="partner_id"
+                                   readonly="state != 'draft'"/>
+                            <field name="partner_type"
+                                   readonly="state != 'draft'"/>
+                            <field name="date"
+                                   readonly="state != 'draft'"/>
+                        </group>
+
+                        <group>
+                            <field name="journal_id"
+                                   readonly="state != 'draft'"/>
+                            <field name="payment_method_id"
+                                   readonly="state != 'draft'"/>
+                            <field name="amount"
+                                   readonly="state != 'draft'"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="reference"
+                               readonly="state != 'draft'"/>
+                    </group>
+
+<!--                    <group>-->
+<!--                        <group>-->
+<!--                            <field name="settled_amount"-->
+<!--                                   readonly="1"-->
+<!--                                   invisible="state == 'draft'"/>-->
+
+<!--                            <field name="balance_amount"-->
+<!--                                   readonly="1"-->
+<!--                                   invisible="state == 'draft'"/>-->
+
+<!--                        </group>-->
+<!--                    </group>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
